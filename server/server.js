@@ -9,7 +9,7 @@ import db from './db';
 // require('mongoose').connect(`${config.dbUrl}`);
 
 
-// app.get('/createUsersTable',(req,res)=>{
+ //app.get('/createUsersTable',(req,res)=>{
 //     let sql = `
 //     create TABLE users (id int AUTO_INCREMENT,
 //         name VARCHAR(255), 
@@ -30,6 +30,7 @@ import db from './db';
 //         res.send('Users Table created..!!!');
 //     });
 // });
+
 
 require('./middleware/appMiddleware')(app);
 
