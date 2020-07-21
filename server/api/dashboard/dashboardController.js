@@ -2,10 +2,16 @@ import db from './../../db.js';
 
 export function post(req,res,next){
  console.log(req.body);
- let {proname,prodesc,price,comments} = req.body;
-  let postquery = `INSERT INTO product (proname, prodesc, price,comments)
-  VALUES ('${proname}', '${prodesc}', '${price}','${comments}');`;
-  db.query(postquery,(err,result)=>{
+ let {proname,prodesc,price,comments,address} = req.body;
+  let postquery = `delimiter //
+  CREATE PROCEDURE additional_details(IN proname varchar(100),IN prodesc varchar(100),IN price int(20),IN comments varchar(100),IN address varchar(100))
+      BEGIN
+      INSERT INTO product (proname, prodesc, price,comments)
+      VALUES (proname, prodesc, price,comments);
+      INSERT INTO users (address)
+      VALUES (address);
+      END//`
+  db.query( `CALL additional_details('${proname}', '${prodesc}', '${price}','${comments}','${address}');`,(err,result)=>{
     console.log("---------")
     if(err){
         console.log(err)
@@ -15,3 +21,4 @@ export function post(req,res,next){
     res.send(result)
   });
 }
+
