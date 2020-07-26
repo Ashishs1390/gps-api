@@ -23,3 +23,18 @@ export function post(req,res,next){
   });
 }
 
+export function get(req,res,next){
+  console.log(req.body);
+  let {name,email,phno,org,size,password,} = req.body;
+  let postquery = `Select * from users`
+  db.query(postquery,(err,result)=>{
+    console.log("-----")
+    if(err){
+      console.log(err)
+      throw err;
+    }
+    console.log(result);
+    res.send(result)
+  });
+}
+
