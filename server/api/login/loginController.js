@@ -24,6 +24,8 @@ export function post(req,res,next){
                  const jsontoken = sign({result:result},"dsf236",{
                      expiresIn:"24h"
                  });
+                 req.session.email = `${email}`;
+                 console.log("req.session.email",req.session.email);
                  res.json({
                      message:"login successfully",
                      token:jsontoken
