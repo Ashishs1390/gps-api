@@ -29,17 +29,19 @@ export function post(req,res,next){
                  res.json({
                      message:"login successfully",
                      token:jsontoken
-                 });
+                 });                 
              }else{
                  res.status(404).send({
                      message:"Invalid username or password"
                  });
+                
              }
  
         }else{
             res.status(404).send({
                 message:"Invalid username or password"
             })
+            
         }
 
     }).catch((err)=>{

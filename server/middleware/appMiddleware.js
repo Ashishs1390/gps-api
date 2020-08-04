@@ -14,7 +14,7 @@ module.exports = (app)=>{
         // cookie: { maxAge: 3600000 }
       }))
     var corsOptions = {
-        origin: "http://localhost:8081"
+        origin: "http://localhost:19006"
     };
     app.use(cors(corsOptions));
 }
