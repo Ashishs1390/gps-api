@@ -24,7 +24,7 @@ export function resetPassword(req,res){
             expiresIn:"24h"
         });
         const DOMAIN = "sandbox0dad9538e830487aaf5159861fc6996f.mailgun.org";
-        const mg = mailgun({apiKey: "0e46ce8701fbefb25ea7518b7984a331-a65173b1-291be9f3", domain: DOMAIN});
+        const mg = mailgun({apiKey: "**********************", domain: DOMAIN});
         const data = {
             from: "Mailgun Sandbox <postmaster@sandbox0dad9538e830487aaf5159861fc6996f.mailgun.org>",
             to: "ashishhsharma1990@gmail.com",
