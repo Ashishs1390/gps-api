@@ -4,6 +4,7 @@ const cors = require("cors");
 var session = require('express-session');
 
 module.exports = (app)=>{
+    
     app.use(morgan('dev'))
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
@@ -11,10 +12,10 @@ module.exports = (app)=>{
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true,
-        // cookie: { maxAge: 3600000 }
+        cookie: { maxAge: 3600000 }
       }))
     var corsOptions = {
-        origin: "http://localhost:19006"
+        origin: "http://localhost:19006,http://localhost:19002/"
     };
     app.use(cors(corsOptions));
 }

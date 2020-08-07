@@ -20,7 +20,7 @@ export function resetPassword(req,res){
             email:emailAddess
         }
         console.log(result);
-        var token = jwt.sign({result:result}, "dsf236",{
+        var token = jwt.sign({result:result}, process.env.JWT_KEY,{
             expiresIn:"24h"
         });
         const DOMAIN = "sandbox0dad9538e830487aaf5159861fc6996f.mailgun.org";
@@ -44,7 +44,7 @@ export function passwordreset(req,res){
     let {token} = req.params;
     console.log(token);
     if(token){
-        jwt.verify(token,"dsf236",(err,decoded)=>{
+        jwt.verify(token, process.env.JWT_KEY,(err,decoded)=>{
             if(err){
                 console.log(err);
                 res.json({
@@ -67,7 +67,7 @@ export function passwordreset(req,res){
 
 export function changePassword(req,res){
     let {token,password} = req.body;
-    jwt.verify(token,"dsf236",(err,decoded)=>{
+    jwt.verify(token, process.env.JWT_KEY,(err,decoded)=>{
         if(err){
             console.log(err);
             res.json({

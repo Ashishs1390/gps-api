@@ -4,12 +4,14 @@ export function checkToken(req,res,next){
     console.log(token);
     if(token){
         token = token.slice(7);
-        verify(token,"dsf236",(err,decoded)=>{
+        verify(token, process.env.JWT_KEY,(err,decoded)=>{
             if(err){
                 res.json({
                     message:"invalid token"
                 });
             }else{
+                // console.log(decoded.result[0].email);
+
                 next();
             }
         });

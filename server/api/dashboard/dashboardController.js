@@ -1,10 +1,13 @@
 import db from './../../db.js';
 export function post(req,res,next){
+  console.log(req);
   let sess = req.session;  
+  console.log("------------")
+  console.log(req.session);
   let useremail = sess.email; 
   let {proname,prodesc,price,comments,address} = req.body;
   let id = `SELECT id FROM users WHERE email = "${useremail}"`
-  
+
     let postquery = `delimiter //
     CREATE PROCEDURE additional_details(IN proname varchar(100),IN prodesc varchar(100),IN price int(20),IN comments varchar(100),IN address varchar(100), IN id int(11))
         BEGIN
@@ -37,7 +40,10 @@ export function post(req,res,next){
 export function get(req,res,next){  
   let sess ;
   sess = req.session;  
-  let useremail = sess.email;  
+  console.log(req.session.email)
+  let useremail = sess.email;
+
+  console.log(useremail);  
     let postquery = `Select id from users where users.email = '${useremail}';`;
       let data =  new Promise((resolve,reject)=>{
         db.query(postquery,(err,result)=>{

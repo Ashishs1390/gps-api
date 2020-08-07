@@ -21,7 +21,7 @@ export function post(req,res,next){
             const passwordCheck = compareSync(password,result[0].password)
              if(passwordCheck){
                  result[0].password = undefined;
-                 const jsontoken = sign({result:result},"dsf236",{
+                 const jsontoken = sign({result:result}, process.env.JWT_KEY,{
                      expiresIn:"24h"
                  });
                  req.session.email = email;

@@ -1,8 +1,9 @@
 import mysql from 'mysql';
+
 const db = mysql.createConnection({
-    host:'localhost',
-    user:'aa',
-    password:'letmein',
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASS,
     database: 'gps'
 });
 
