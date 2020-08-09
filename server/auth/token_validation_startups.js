@@ -1,5 +1,5 @@
 import {verify} from 'jsonwebtoken';
-export function checkToken(req,res,next){
+export function checkTokenStartUp(req,res,next){
     let token = req.get("authorization");
     if(token){
         token = token.slice(7);
