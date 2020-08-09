@@ -10,9 +10,9 @@ module.exports = (app)=>{
     app.use(bodyParser.json());
     app.use(session({
         secret: 'keyboard cat',
-        resave: false,
+        resave: true,
         saveUninitialized: true,
-        cookie: { maxAge: 3600000 }
+        maxAge:'24h'
       }))
     var corsOptions = {
         origin: "http://localhost:19006,http://localhost:19002/"

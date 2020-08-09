@@ -18,7 +18,6 @@ let usePromise = new Promise((resolve,reject)=>{
 });
 usePromise.then((resp)=>{
   if(resp.length !=0){
-    console.log(resp);
     if(resp[0].email == email ){
       res.send({message:"Email already registered"})
     }

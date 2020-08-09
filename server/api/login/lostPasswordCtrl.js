@@ -12,14 +12,12 @@ export function forgotPassword(req,res){
 export function resetPassword(req,res){
 
     const {email} = req.body;
-    console.log(email);
     if(email != undefined){
         const emailAddess = email;
         let result = {
             password:undefined,
             email:emailAddess
         }
-        console.log(result);
         var token = jwt.sign({result:result}, process.env.JWT_KEY,{
             expiresIn:"24h"
         });
@@ -40,9 +38,7 @@ export function resetPassword(req,res){
 }
 
 export function passwordreset(req,res){
-    console.log(req.params)
     let {token} = req.params;
-    console.log(token);
     if(token){
         jwt.verify(token, process.env.JWT_KEY,(err,decoded)=>{
             if(err){
@@ -75,7 +71,6 @@ export function changePassword(req,res){
             });
         }else{
             
-            console.log(decoded);
             const salt = genSaltSync(10);
             password = hashSync(password,salt);
 
@@ -84,7 +79,6 @@ export function changePassword(req,res){
                 if(err){
                     reject(err);
                 }
-                console.log(result);
                 if(result){
                     res.send("password changed successfully")
                 }

@@ -1,6 +1,5 @@
 import db from './../../db.js';
 export function post(req,res,next){
-  console.log(req);
   let sess = req.session;  
   console.log("------------")
   console.log(req.session);
@@ -40,7 +39,7 @@ export function post(req,res,next){
 export function get(req,res,next){  
   let sess ;
   sess = req.session;  
-  console.log(req.session.email)
+  console.log(req.session)
   let useremail = sess.email;
 
   console.log(useremail);  

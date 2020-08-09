@@ -1,19 +1,44 @@
 import db from './../../../db.js'
 
 export function get(req,res,next){
-    res.send("Hi from seekers");
+    displayUser(req,res).then((resp)=>{
+        res.status(200).send(resp);
+    }).catch((err)=>{
+        res.status(500).send(err);
+    });   
+}
+function displayUser(req,res){
+    return new Promise((resolve,reject)=>{
+        let getQuery = `SELECT email, interest FROM seekersusers`;
+        db.query(getQuery,(err,result)=>{
+            if(err){
+                reject(err);
+            }
+            resolve(result);
+        });
+
+    });
 }
 
 export function post(req,res,next){
-    console.log(req.body);
-    // res.send("Seekers")
-
-    createUser(req);
+    createUser(req).then((resp)=>{
+        res.status(200).send(resp);
+    }).catch((err)=>{
+        res.status(500).send(err);
+    });
 }
 
 
 function createUser(req){
-    let {email, password,interest} = req.body;
-    let postquery = `INSERT INTO seekersusers (name, email, password)
-    VALUES ('${name}','${email}','${phno}', '${org}', '${size}', '${password}');`;
+    return new Promise((resolve,reject)=>{
+        let {email, password,interest} = req.body;
+        let postquery = `INSERT INTO seekersusers (interest, email, password)
+        VALUES ('${interest}','${email}','${password}');`;
+        db.query(postquery,(err,result)=>{
+            if(err){
+                reject(err);
+            }
+            resolve(result);
+        });
+    });
 }

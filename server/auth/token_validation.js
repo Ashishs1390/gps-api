@@ -9,8 +9,6 @@ export function checkToken(req,res,next){
                     message:"invalid token"
                 });
             }else{
-                // console.log(decoded.result[0].email);
-
                 next();
             }
         });

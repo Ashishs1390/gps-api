@@ -3,7 +3,6 @@ import { compareSync } from 'bcrypt';
 import {sign} from 'jsonwebtoken';
 
 export function post(req,res,next){
-    console.log(req.body);
     let {email,password} = req.body;
     let postQuery = `select email,password from users where email = '${email}'`;
     new Promise((resolve,reject)=>{
@@ -25,7 +24,6 @@ export function post(req,res,next){
                      expiresIn:"24h"
                  });
                  req.session.email = email;
-                 console.log("req.session.email",req.session.email);
                  res.json({
                      message:"login successfully",
                      token:jsontoken
