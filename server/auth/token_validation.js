@@ -1,5 +1,6 @@
 import {verify} from 'jsonwebtoken';
 export function checkToken(req,res,next){
+    console.log("---------")
     let token = req.get("authorization");
     if(token){
         token = token.slice(7);
@@ -9,6 +10,7 @@ export function checkToken(req,res,next){
                     message:"invalid token"
                 });
             }else{
+                req.user = decoded.result[0].email;
                 next();
             }
         });

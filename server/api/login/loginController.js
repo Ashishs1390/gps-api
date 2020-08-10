@@ -23,7 +23,6 @@ export function post(req,res,next){
                  const jsontoken = sign({result:result}, process.env.JWT_KEY,{
                      expiresIn:"24h"
                  });
-                 req.session.email = email;
                  res.json({
                      message:"login successfully",
                      token:jsontoken
