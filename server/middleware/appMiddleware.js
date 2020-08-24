@@ -9,7 +9,7 @@ module.exports = (app)=>{
     app.use(bodyParser.json());
     
     var corsOptions = {
-        origin: "http://localhost:19006,http://localhost:19002/"
+        origin: "http://localhost:19006"
     };
     app.use(cors(corsOptions));
 }

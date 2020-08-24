@@ -1,5 +1,5 @@
 // import sql from 'mysql';
-import db from './../../db.js';
+import db from './../../../db.js';
 import { genSaltSync, hashSync } from 'bcrypt';
 
 export function post(req,res,next){

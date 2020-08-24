@@ -1,4 +1,4 @@
-import db from './../../db.js';
+import db from './../../../db.js';
 export function post(req,res,next){
   console.log("------------")
   console.log(req.user);
